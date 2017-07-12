@@ -41,13 +41,11 @@ module.exports = {
       when(
         hook => hook.params.provider,
         discard('password')
-      )
-    ],
-    find: [
+      ),
       populate({ schema: schema })
     ],
+    find: [],
     get: [
-      populate({ schema: schema }),
       setRolePermission()
     ],
     create: [setDefaultPermissions({service:'users'})],
