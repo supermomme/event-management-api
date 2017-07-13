@@ -6,9 +6,12 @@ const role = require('./role/role.service.js');
 
 const event = require('./event/event.service.js');
 
+const program = require('./program/program.service.js');
+
 module.exports = function () {
   const app = this; // eslint-disable-line no-unused-vars
   app.configure(users);
   app.configure(role);
   app.configure(event);
+  app.configure(program);
 };
