@@ -4,6 +4,7 @@ const { authenticate } = require('feathers-authentication').hooks;
 const { checkPermissions, isPermitted } = require('feathers-permissions').hooks;
 const { iff, isProvider, populate } = require('feathers-hooks-common');
 const setCreator = require('../../hooks/set-creator');
+const eventAttachments = require('../../hooks/event-attachments');
 
 const authAndPermissions = [
   authenticate('jwt'),
@@ -37,7 +38,7 @@ module.exports = {
   after: {
     all: [populate({ schema: schema })],
     find: [],
-    get: [],
+    get: [eventAttachments()],
     create: [],
     update: [],
     patch: [],

@@ -5,7 +5,7 @@ const { checkPermissions, isPermitted } = require('feathers-permissions').hooks;
 const { populate, when, discard, iff, isProvider, softDelete } = require('feathers-hooks-common');
 const { hashPassword } = require('feathers-authentication-local').hooks;
 
-const setRolePermission = require('../../hooks/set-role-permission');
+const setExtraPermissions = require('../../hooks/set-extra-permissions');
 const setDefaultPermissions = require('../../hooks/set-default-permissions');
 
 const schema = {
@@ -45,9 +45,7 @@ module.exports = {
       populate({ schema: schema })
     ],
     find: [],
-    get: [
-      setRolePermission()
-    ],
+    get: [ setExtraPermissions() ],
     create: [setDefaultPermissions({service:'users'})],
     update: [],
     patch: [],
