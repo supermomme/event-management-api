@@ -16,6 +16,7 @@ module.exports = function (app) {
       zip: { type: String, required: false },
       street: { type: String, required: false },
     },
+    activated: { type: Boolean, default: false },
 
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
