@@ -11,6 +11,9 @@ module.exports = function (app) {
     description: { type: String, required: false, default: '' },
     creator: { type: mongooseClient.Schema.Types.ObjectId, ref: 'users', required: true },
 
+    startsAt: { type: Date, required: true },
+    endsAt: { type: Date, required: true },
+
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });

@@ -2,26 +2,17 @@
 
 const { authenticate } = require('feathers-authentication').hooks;
 const { checkPermissions, isPermitted } = require('feathers-permissions').hooks;
-const { populate, when, discard, iff, isProvider, softDelete } = require('feathers-hooks-common');
-const { hashPassword } = require('feathers-authentication-local').hooks;
-
-const schema = {
-  include: [
-    { service: 'event', parentField: 'event', nameAs: 'event', childField: '_id' },
-    { service: 'users', parentField: 'user', nameAs: 'user', childField: '_id' },
-    { service: 'purpose', parentField: 'purpose', nameAs: 'purpose', childField: '_id' }
-  ]
-};
+const { iff, isProvider, populate, softDelete } = require('feathers-hooks-common');
 
 const authAndPermissions = [
   authenticate('jwt'),
-  checkPermissions({ service: 'registration' }),
+  checkPermissions({ service: 'picture' }),
   iff(isProvider('external'), isPermitted())
 ]
 
 module.exports = {
   before: {
-    all: [...authAndPermissions],
+    all: [ ...authAndPermissions, softDelete() ],
     find: [],
     get: [],
     create: [],
@@ -31,7 +22,7 @@ module.exports = {
   },
 
   after: {
-    all: [populate({ schema: schema })],
+    all: [],
     find: [],
     get: [],
     create: [],

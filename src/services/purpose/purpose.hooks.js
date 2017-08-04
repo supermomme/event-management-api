@@ -12,12 +12,7 @@ const authAndPermissions = [
 
 const schema = {
   include: [
-    {
-      service: 'event',
-      parentField: 'event',
-      nameAs: 'event',
-      childField: '_id'
-    }
+    { service: 'event', parentField: 'event', nameAs: 'event', childField: '_id' }
   ]
 };
 
@@ -33,13 +28,13 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [populate({ schema: schema })],
     find: [],
-    get: [populate({ schema: schema })],
-    create: [populate({ schema: schema })],
-    update: [populate({ schema: schema })],
-    patch: [populate({ schema: schema })],
-    remove: [populate({ schema: schema })]
+    get: [],
+    create: [],
+    update: [],
+    patch: [],
+    remove: []
   },
 
   error: {

@@ -19,11 +19,7 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
         acc.push(val.purpose)
         return acc;
       }, []))
-      .then(ids=>{
-        var obj_ids = ids.map(function(id) { return mongooseClient.Types.ObjectId(id); });
-        return hook.app.service('purpose').find({query:{_id: {$in: obj_ids}}})
-        .then(res=>res.data.reduce((acc,val)=>acc.concat(val.permissions),[]))
-      })
+      .then(purposes=>purposes.reduce((acc,val)=>acc.concat(val.permissions),[]))
 
     ]
 

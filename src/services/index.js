@@ -12,6 +12,8 @@ const purpose = require('./purpose/purpose.service.js');
 
 const registration = require('./registration/registration.service.js');
 
+const picture = require('./picture/picture.service.js');
+
 module.exports = function () {
   const app = this; // eslint-disable-line no-unused-vars
   app.configure(users);
@@ -20,4 +22,5 @@ module.exports = function () {
   app.configure(program);
   app.configure(purpose);
   app.configure(registration);
+  app.configure(picture);
 };

@@ -17,6 +17,7 @@ module.exports = function (app) {
       street: { type: String, required: false },
     },
     activated: { type: Boolean, default: false },
+    picture: { type: mongooseClient.Schema.Types.ObjectId, ref: 'picture', required: true },
 
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },

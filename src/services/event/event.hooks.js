@@ -13,12 +13,7 @@ const authAndPermissions = [
 
 const schema = {
   include: [
-    {
-      service: 'users',
-      parentField: 'creator',
-      nameAs: 'creator',
-      childField: '_id'
-    }
+    { service: 'users', parentField: 'creator', nameAs: 'creator', childField: '_id' }
   ]
 };
 

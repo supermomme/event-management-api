@@ -10,12 +10,8 @@ const setDefaultPermissions = require('../../hooks/set-default-permissions');
 
 const schema = {
   include: [
-    {
-      service: 'role',
-      parentField: 'role',
-      nameAs: 'role',
-      childField: '_id'
-    }
+    { service: 'role', parentField: 'role', nameAs: 'role', childField: '_id' },
+    { service: 'picture', parentField: 'picture', nameAs: 'picture', childField: '_id' }
   ]
 };
 
