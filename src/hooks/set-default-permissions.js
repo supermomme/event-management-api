@@ -10,7 +10,10 @@ module.exports = function (options = {}) {
     let permissions = [
       ...hook.result.permissions,
       `${options.service}:get:${hook.result._id}`,
-      `${options.service}:patch:${hook.result._id}`
+      `${options.service}:patch:${hook.result._id}`,
+      `event:get`,
+      `event:find`,
+      `registration:create`
     ]
 
     return hook.app.service(options.service).patch(hook.result._id, {

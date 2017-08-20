@@ -10,6 +10,7 @@ module.exports = function (app) {
 
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
+    username: { type: String, required: true },
     phone: { type: String, required: false },
     address: {
       town: { type: String, required: false },
@@ -17,7 +18,7 @@ module.exports = function (app) {
       street: { type: String, required: false },
     },
     activated: { type: Boolean, default: false },
-    picture: { type: mongooseClient.Schema.Types.ObjectId, ref: 'picture', required: true },
+    picture: { type: mongooseClient.Schema.Types.ObjectId, ref: 'picture', required: false },
 
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
